@@ -5,6 +5,8 @@ const languages = (score) => {
     return "B";
   } else if (score >= 55 && score <= 64) {
     return "C";
+  } else if (score >= 45 && score <= 54) {
+    return "pass";
   } else {
     return "sup";
   }
@@ -16,6 +18,8 @@ const sciences = (score) => {
     return "B";
   } else if (score >= 50 && score <= 59) {
     return "C";
+  } else if (score >= 40 && score <= 49) {
+    return "pass";
   } else {
     return "sup";
   }
@@ -27,6 +31,8 @@ const humanites = (score) => {
     return "B";
   } else if (score >= 60 && score <= 69) {
     return "C";
+  } else if (score >= 50 && score <= 59) {
+    return "pass";
   } else {
     return "sup";
   }
@@ -45,6 +51,7 @@ const student = {
 
 const calculateGradesAndAverage = (student) => {
   const grades = {
+    name: student.name,
     math: sciences(student.math),
     eng: languages(student.eng),
     kis: languages(student.kis),
@@ -54,7 +61,7 @@ const calculateGradesAndAverage = (student) => {
     comp: languages(student.comp),
   };
 
-  const average =
+  const average = Math.floor(
     (student.math +
       student.eng +
       student.kis +
@@ -62,8 +69,8 @@ const calculateGradesAndAverage = (student) => {
       student.che +
       student.cre +
       student.comp) /
-    7;
-
+      7
+  );
   return { grades, average };
 };
 console.log(calculateGradesAndAverage(student));
